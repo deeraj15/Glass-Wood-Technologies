@@ -1,0 +1,458 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#FAF9F6" />
+  <meta name="description"
+    content="Glass Wood Technologies brings thoughtful design and dependable technology together to build what comes next." />
+  <title>Glass Wood Technologies — Ideas, built to last</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Inter:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap"
+    rel="stylesheet" />
+  <link rel="icon" href="assets/brand-mark.svg" type="image/svg+xml" />
+  <script>
+    (() => {
+      try {
+        const savedTheme = localStorage.getItem("gwt-theme");
+        const preferredTheme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+        document.documentElement.dataset.theme = savedTheme || preferredTheme;
+        document.querySelector('meta[name="theme-color"]').content = document.documentElement.dataset.theme === "dark" ? "#111815" : "#FAF9F6";
+      } catch {
+        document.documentElement.dataset.theme = "light";
+      }
+    })();
+  </script>
+  <link rel="stylesheet" href="styles.css" />
+  <script type="importmap">
+      {
+        "imports": {
+          "three": "https://cdn.jsdelivr.net/npm/three@0.170.0/build/three.module.js"
+        }
+      }
+    </script>
+  <script src="script.js" defer></script>
+</head>
+
+<body>
+  <!-- ═══════════════════════════════════════════════════════════════
+         CINEMATIC INTRO: 60FPS HARDWARE-ACCELERATED CANVAS TOUR
+         Zero-lag instant scroll scrubbing across all rooms
+         ═══════════════════════════════════════════════════════════════ -->
+  <div id="cinematic-intro" class="cinematic-intro" aria-label="Cinematic introduction sequence">
+    <div class="intro-scroll-track" id="intro-scroll-track">
+      <div class="intro-viewport">
+
+        <!-- 60FPS Hardware Accelerated Canvas Renderer -->
+        <div class="intro-canvas-container" id="intro-canvas-container">
+          <canvas id="intro-tour-canvas" width="1280" height="720"></canvas>
+          <div class="intro-vignette-overlay"></div>
+        </div>
+
+        <!-- Initial Title Overlay at Scroll 0 -->
+        <div class="intro-text-overlay" id="intro-text-overlay">
+          <div class="intro-text-container">
+            <div class="intro-brand-line">
+              <span class="intro-word intro-word--1">Glass</span>
+              <span class="intro-word intro-word--2">Wood</span>
+            </div>
+            <div class="intro-tagline">
+              <span class="intro-word intro-word--3">Technologies</span>
+            </div>
+            <div class="intro-subtitle">
+              <span class="intro-word intro-word--4">Ideas, built to last</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Top-Left Room Callout (Pure White Font, Appears Strictly in Specified Timeline) -->
+        <div class="room-callout-panel" id="room-callout-panel">
+          <div class="room-callout-kicker" id="room-callout-kicker">SPATIAL WALKTHROUGH</div>
+          <h2 class="room-callout-name" id="room-callout-name">LIVING ROOM</h2>
+          <div class="room-callout-rule"></div>
+        </div>
+
+        <!-- Bottom HUD Status with Scroll Indicator -->
+        <div class="intro-bottom-hud" id="intro-bottom-hud">
+          <span class="hud-phase-label" id="intro-phase-label">EXTERIOR ARCHITECTURE</span>
+          <div class="hud-progress-bar">
+            <div class="hud-progress-fill" id="intro-progress-fill"></div>
+          </div>
+          <div class="hud-scroll-cue"><span>SCROLL DOWN</span><i>↓</i></div>
+        </div>
+
+        <!-- Skip / Enter Site Button -->
+        <button class="intro-skip" id="intro-skip" type="button" aria-label="Skip walkthrough">
+          Enter Site <span aria-hidden="true">→</span>
+        </button>
+
+      </div>
+    </div>
+  </div>
+
+  <a class="skip-link" href="#main">Skip to content</a>
+  <main id="main">
+
+    <section class="hero" id="top" aria-labelledby="hero-title">
+      <div class="hero-sticky">
+        <div class="hero-globe-background" id="hero-globe-background" aria-hidden="true"></div>
+        <div class="hero-grid" aria-hidden="true"></div>
+        <div class="hero-glow hero-glow--one" aria-hidden="true"></div>
+        <div class="hero-glow hero-glow--two" aria-hidden="true"></div>
+
+        <header class="site-header">
+          <a class="brand" href="#top" aria-label="Glass Wood Technologies home">
+            <img class="brand__mark" src="assets/brand-mark.svg" alt="" width="44" height="44" />
+            <span class="brand__wordmark">
+              <span class="brand__name">Glass Wood</span>
+              <span class="brand__descriptor">Technologies</span>
+            </span>
+          </a>
+
+          <div class="header-actions">
+            <nav class="primary-nav" id="primary-navigation" aria-label="Main navigation">
+              <a href="#about">About</a>
+              <a href="#why-us">Why GWT</a>
+              <a href="#studio">Studio</a>
+              <a href="#approach">Approach</a>
+              <a class="nav-cta" href="#contact">Request a demo <span aria-hidden="true">↗</span></a>
+            </nav>
+            <button class="theme-toggle" type="button" data-theme-toggle aria-label="Switch to dark mode"
+              title="Switch to dark mode">
+              <svg class="theme-toggle__moon" viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M20.2 15.1A8.3 8.3 0 0 1 8.9 3.8 8.4 8.4 0 1 0 20.2 15.1Z" />
+              </svg>
+              <svg class="theme-toggle__sun" viewBox="0 0 24 24" aria-hidden="true">
+                <circle cx="12" cy="12" r="4" />
+                <path
+                  d="M12 2v2m0 16v2M4.93 4.93l1.42 1.42m11.3 11.3 1.42 1.42M2 12h2m16 0h2M4.93 19.07l1.42-1.42m11.3-11.3 1.42-1.42" />
+              </svg>
+              <span class="sr-only">Switch to dark mode</span>
+            </button>
+            <button class="menu-toggle" type="button" aria-label="Open navigation menu" aria-expanded="false"
+              aria-controls="primary-navigation">
+              <span></span><span></span>
+            </button>
+          </div>
+        </header>
+
+        <div class="hero-main wrap">
+          <div class="hero-copy">
+            <p class="eyebrow eyebrow--light"><span class="status-dot"></span> Design · Technology · Progress</p>
+            <h1 id="hero-title">Ideas, built<br /><em>to last.</em></h1>
+            <p class="hero-intro">
+              We bring clear thinking, thoughtful design and dependable technology together—
+              turning ambitious ideas into experiences people can rely on.
+            </p>
+            <div class="hero-actions">
+              <a class="button button--primary" href="#contact">Request a demo <span aria-hidden="true">↗</span></a>
+              <a class="text-link text-link--light" href="#approach">Discover our approach <span
+                  aria-hidden="true">↓</span></a>
+            </div>
+            <div class="hero-note">
+              <span class="hero-note__line"></span>
+              <span>Scroll down; the globe gives way to the build.</span>
+            </div>
+          </div>
+
+        </div>
+        <div class="hero-scroll" aria-hidden="true"><span class="scroll-line"></span><span>Scroll to build</span><span
+            class="hero-scroll__arrow">↓</span></div>
+      </div>
+    </section>
+
+    <section class="assembly-story" id="formation" aria-labelledby="formation-title">
+      <div class="assembly-sticky">
+        <div class="assembly-copy">
+          <div class="section-kicker section-kicker--light"><span class="section-number">00</span><span>The
+              formation</span></div>
+          <p class="eyebrow eyebrow--light">Scroll-driven build sequence</p>
+          <h2 id="formation-title">Good ideas<br />need a <em>frame.</em></h2>
+          <p class="assembly-intro">Scroll to see the form come together—from its foundation to the finished experience.
+          </p>
+
+          <div class="assembly-chapters" aria-label="Structure formation steps">
+            <button class="assembly-step is-active" type="button" data-stage-step="0" data-scroll-progress="0.08"
+              aria-current="step">
+              <span class="assembly-step__number">01</span><span
+                class="assembly-step__copy"><strong>Foundation</strong><small>Start with a clear
+                  purpose.</small></span><span class="assembly-step__mark" aria-hidden="true">↗</span>
+            </button>
+            <button class="assembly-step" type="button" data-stage-step="1" data-scroll-progress="0.51">
+              <span class="assembly-step__number">02</span><span
+                class="assembly-step__copy"><strong>Structure</strong><small>Bring the parts
+                  together.</small></span><span class="assembly-step__mark" aria-hidden="true">↗</span>
+            </button>
+            <button class="assembly-step" type="button" data-stage-step="2" data-scroll-progress="0.91">
+              <span class="assembly-step__number">03</span><span
+                class="assembly-step__copy"><strong>Experience</strong><small>Make the idea
+                  tangible.</small></span><span class="assembly-step__mark" aria-hidden="true">↗</span>
+            </button>
+          </div>
+
+          <div class="assembly-progress" role="progressbar" aria-label="Structure formation progress" aria-valuemin="0"
+            aria-valuemax="100" aria-valuenow="0"><span></span></div>
+          <p class="assembly-scroll-hint"><span>Keep scrolling to assemble</span><span aria-hidden="true">↓</span></p>
+        </div>
+
+        <div class="assembly-visual assembly-visual--construction" data-stage="0">
+          <div class="construction-sequence hero-sequence" id="construction-sequence"
+            aria-label="Scroll-controlled house construction sequence">
+            <div class="art-topline"><span>GWT / BUILD STUDY 001</span><span>SCROLL-DRIVEN SEQUENCE</span></div>
+            <div class="art-stage construction-stage">
+              <img class="construction-poster" src="assets/construction-frames/frame_001.jpg"
+                alt="A modern house at the start of its construction sequence" width="1280" height="720" />
+              <canvas class="construction-canvas" id="construction-canvas" width="1280" height="720"
+                aria-hidden="true"></canvas>
+              <div class="construction-hud" aria-hidden="true">
+                <span class="construction-hud__live"><i></i> HOUSE FORMATION</span>
+                <span class="construction-hud__frame">FRAME <b id="construction-frame-number">001</b> / 040</span>
+              </div>
+              <div class="construction-stage-label" id="construction-stage-label" aria-live="polite">01 / FOUNDATION
+              </div>
+            </div>
+            <div class="art-bottomline"><span>FOUNDATION → STRUCTURE → EXPERIENCE</span><span>SCROLL TO BUILD</span>
+            </div>
+            <div class="construction-progress" role="progressbar" aria-label="House formation progress"
+              aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"><span></span></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="intro-section section-pad" id="about" aria-labelledby="about-title">
+      <div class="wrap intro-grid">
+        <div class="section-kicker reveal"><span class="section-number">01</span><span>About Glass Wood</span></div>
+        <div class="intro-content reveal">
+          <p class="eyebrow">A clear view from the start</p>
+          <h2 id="about-title">Great work starts with <em>how you think.</em></h2>
+          <div class="intro-bottom">
+            <p class="intro-lede">We believe the best outcomes come from joining the dots early—between people, design
+              and technology.</p>
+            <p class="body-copy">Glass Wood Technologies connects thoughtful design and dependable technology from the
+              first idea to the finished experience. We approach each challenge with curiosity, bring structure to
+              complexity, and pay attention to the details that make the whole thing feel right.</p>
+          </div>
+          <div class="principle-strip" aria-label="Our principles">
+            <div><span>01</span><strong>Listen first</strong></div>
+            <div><span>02</span><strong>Build with clarity</strong></div>
+            <div><span>03</span><strong>Keep improving</strong></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="thesis-section section-pad" id="why-us" aria-labelledby="why-title">
+      <div class="wrap">
+        <div class="thesis-heading reveal">
+          <div class="section-kicker"><span class="section-number">02</span><span>Why Glass Wood</span></div>
+          <div class="thesis-heading__main">
+            <p class="eyebrow">Good work, considered from every angle</p>
+            <h2 id="why-title">A partner for the <em>whole picture.</em></h2>
+          </div>
+          <p class="thesis-heading__aside">We bring people, product and technology into the same conversation—then keep
+            them moving together.</p>
+        </div>
+        <div class="thesis-grid">
+          <article class="thesis-card reveal" data-cursor="interactive">
+            <div class="thesis-card__top"><span>01 / CLARITY</span><span class="thesis-card__symbol"
+                aria-hidden="true">↗</span></div>
+            <h3>Make the complex<br /><em>feel clear.</em></h3>
+            <p>Strong decisions begin with a shared understanding of the problem and the people it affects.</p>
+            <div class="thesis-card__line" aria-hidden="true"></div>
+          </article>
+          <article class="thesis-card reveal" data-cursor="interactive">
+            <div class="thesis-card__top"><span>02 / CONNECTION</span><span class="thesis-card__symbol"
+                aria-hidden="true">↗</span></div>
+            <h3>Bring every part<br /><em>into focus.</em></h3>
+            <p>Product thinking, design and engineering work best as one connected practice.</p>
+            <div class="thesis-card__line" aria-hidden="true"></div>
+          </article>
+          <article class="thesis-card reveal" data-cursor="interactive">
+            <div class="thesis-card__top"><span>03 / MOMENTUM</span><span class="thesis-card__symbol"
+                aria-hidden="true">↗</span></div>
+            <h3>Build for what<br /><em>comes next.</em></h3>
+            <p>Thoughtful foundations make room to learn, adapt and keep making progress.</p>
+            <div class="thesis-card__line" aria-hidden="true"></div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="studio-section section-pad" id="studio" aria-labelledby="studio-title">
+      <div class="wrap">
+        <div class="studio-showcase reveal">
+          <div class="studio-showcase__copy">
+            <div class="section-kicker"><span class="section-number">03</span><span>The studio</span></div>
+            <p class="eyebrow">GWT / Experience lab</p>
+            <h2 id="studio-title">See the idea<br />from every <em>angle.</em></h2>
+            <p class="studio-showcase__description">An aerial master-plan view brings the towers, shared amenities,
+              access and landscape together as one connected place.</p>
+            <a class="button button--primary" href="#contact">Request a demo <span aria-hidden="true">↗</span></a>
+            <div class="studio-showcase__index"><span>01</span><span>CONCEPT / SPATIAL EXPERIENCE</span></div>
+          </div>
+
+          <div class="experience-window" data-cursor="interactive">
+            <div class="experience-window__bar">
+              <div class="browser-lights" aria-hidden="true"><i></i><i></i><i></i></div>
+              <span class="experience-window__address">GWT / experience lab / concept 01</span>
+              <div class="map-controls" role="group" aria-label="Preview image controls">
+                <button type="button" data-map-zoom="out" aria-label="Zoom out">−</button>
+                <button type="button" data-map-zoom="in" aria-label="Zoom in">+</button>
+              </div>
+            </div>
+            <div class="experience-map" id="experience-map" role="group"
+              aria-label="Aerial residential site plan preview">
+              <div class="experience-map__drawing">
+                <img class="site-plan-image" src="assets/studio-site-plan.jpg"
+                  alt="Aerial residential master plan showing labeled towers, the main entrance, clubhouse, gymnasium, parks, sports courts and amphitheater"
+                  width="1920" height="1072" loading="lazy" />
+              </div>
+            </div>
+            <div class="experience-window__footer"><span>GWT / SPATIAL STACK</span><span>MOVE THROUGH THE
+                IDEA</span><span>PREVIEW 01</span></div>
+          </div>
+        </div>
+
+        <div class="capability-heading reveal" id="capabilities">
+          <div class="section-kicker"><span class="section-number">↘</span><span>Beyond the first idea</span></div>
+          <p>One shared foundation. Different ways to bring it to life.</p>
+        </div>
+        <div class="capability-grid">
+          <article class="capability-card reveal" data-cursor="interactive">
+            <div class="capability-art capability-art--product" aria-hidden="true">
+              <span></span><span></span><span></span><i></i>
+            </div>
+            <p class="eyebrow">01 · Product</p>
+            <h3>Strategy &amp; product design</h3>
+            <p>Find the right problem, shape the journey, and make each interaction feel considered.</p>
+            <a href="#contact" aria-label="Discuss product strategy and design">Explore <span
+                aria-hidden="true">↗</span></a>
+          </article>
+          <article class="capability-card reveal" data-cursor="interactive">
+            <div class="capability-art capability-art--digital" aria-hidden="true">
+              <span></span><span></span><span></span><i></i>
+            </div>
+            <p class="eyebrow">02 · Experience</p>
+            <h3>Web &amp; digital experiences</h3>
+            <p>Create responsive, accessible experiences that make complex things easier to use.</p>
+            <a href="#contact" aria-label="Discuss web and digital experiences">Explore <span
+                aria-hidden="true">↗</span></a>
+          </article>
+          <article class="capability-card reveal" data-cursor="interactive">
+            <div class="capability-art capability-art--engineering" aria-hidden="true">
+              <span></span><span></span><span></span><i></i>
+            </div>
+            <p class="eyebrow">03 · Engineering</p>
+            <h3>Software &amp; delivery</h3>
+            <p>Build a dependable foundation, then keep learning and improving as it grows.</p>
+            <a href="#contact" aria-label="Discuss software and delivery">Explore <span aria-hidden="true">↗</span></a>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="work-section section-pad" id="approach" aria-labelledby="work-title">
+      <div class="wrap">
+        <div class="section-heading reveal">
+          <div class="section-kicker"><span class="section-number">04</span><span>How we work</span></div>
+          <div class="section-heading__main">
+            <p class="eyebrow">One connected process</p>
+            <h2 id="work-title">From first sketch<br />to <em>what’s next.</em></h2>
+          </div>
+          <p class="section-heading__aside">We make the complex feel clear, then keep moving with care and intention.
+          </p>
+        </div>
+
+        <div class="process-line" aria-hidden="true"><span></span></div>
+        <div class="process-grid">
+          <article class="process-card reveal">
+            <div class="process-card__meta"><span>01</span><span class="process-icon process-icon--listen"
+                aria-hidden="true"><i></i><i></i><i></i></span></div>
+            <h3>Understand<br />the opportunity.</h3>
+            <p>We start with good questions and a shared understanding of what matters most.</p>
+            <div class="process-card__foot">LISTEN <span>↗</span></div>
+          </article>
+          <article class="process-card reveal">
+            <div class="process-card__meta"><span>02</span><span class="process-icon process-icon--shape"
+                aria-hidden="true"><i></i><i></i><i></i></span></div>
+            <h3>Shape a smarter<br />way forward.</h3>
+            <p>We bring design and technology into the same conversation, early and often.</p>
+            <div class="process-card__foot">DESIGN <span>↗</span></div>
+          </article>
+          <article class="process-card reveal">
+            <div class="process-card__meta"><span>03</span><span class="process-icon process-icon--build"
+                aria-hidden="true"><i></i><i></i><i></i></span></div>
+            <h3>Build, learn<br />and make it real.</h3>
+            <p>We turn a strong foundation into considered work that’s ready for what comes next.</p>
+            <div class="process-card__foot">DELIVER <span>↗</span></div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="statement-section" aria-label="Our philosophy">
+      <div class="statement-grid" aria-hidden="true"></div>
+      <div class="wrap statement-content reveal">
+        <p class="eyebrow">A better kind of progress</p>
+        <p class="statement">Build with care.<br /><em>Leave room to grow.</em></p>
+        <div class="statement-rule"><span></span><span>GLASS WOOD TECHNOLOGIES</span><span></span></div>
+      </div>
+    </section>
+
+    <section class="belief-section" aria-labelledby="belief-title">
+      <div class="belief-orbit belief-orbit--one" aria-hidden="true"></div>
+      <div class="belief-orbit belief-orbit--two" aria-hidden="true"></div>
+      <div class="wrap belief-content reveal">
+        <div class="belief-label"><span class="section-number">05</span><span>A shared conviction</span></div>
+        <div class="belief-quote-mark" aria-hidden="true">“</div>
+        <h2 id="belief-title">The best work makes<br />good ideas <em>go further.</em></h2>
+        <div class="belief-attribution"><span class="belief-attribution__line"></span><span>GLASS WOOD
+            TECHNOLOGIES</span></div>
+      </div>
+    </section>
+
+    <section class="contact-section" id="contact" aria-labelledby="contact-title">
+      <div class="contact-grain" aria-hidden="true"></div>
+      <div class="wrap contact-layout reveal">
+        <div>
+          <p class="eyebrow eyebrow--light"><span class="status-dot"></span> Ready when you are</p>
+          <h2 id="contact-title">Have an idea<br />taking <em>shape?</em></h2>
+        </div>
+        <div class="contact-side">
+          <p>Start with a conversation. We’ll bring curiosity, clear thinking and a fresh perspective.</p>
+          <a class="contact-link"
+            href="mailto:hello@glasswoodtechnologies.com?subject=Glass%20Wood%20Technologies%20%E2%80%94%20Project%20enquiry">Request
+            a demo <span aria-hidden="true">↗</span></a>
+        </div>
+      </div>
+      <footer class="site-footer wrap">
+        <a class="brand brand--footer" href="#top" aria-label="Glass Wood Technologies, back to top">
+          <img class="brand__mark" src="assets/brand-mark.svg" alt="" width="38" height="38" />
+          <span class="brand__wordmark"><span class="brand__name">Glass Wood</span><span
+              class="brand__descriptor">Technologies</span></span>
+        </a>
+        <p class="footer-note">Thoughtful by design.<br />Built with intent.</p>
+        <div class="footer-links">
+          <div><span class="footer-heading">EXPLORE</span><a href="#studio">The studio</a><a
+              href="#capabilities">Capabilities</a><a href="#approach">Our approach</a></div>
+          <div><span class="footer-heading">COMPANY</span><a href="#about">About</a><a href="#contact">Contact</a></div>
+          <div><span class="footer-heading">CONNECT</span><a href="mailto:hello@glasswoodtechnologies.com">Email us
+              <span aria-hidden="true">↗</span></a><a href="#contact">Request a demo <span
+                aria-hidden="true">↗</span></a></div>
+        </div>
+        <div class="footer-bottom"><span class="copyright">© <span id="year"></span> Glass Wood Technologies</span><a
+            class="back-top" href="#top">Back to top <span aria-hidden="true">↑</span></a></div>
+      </footer>
+    </section>
+  </main>
+  <div class="cursor-orbit" aria-hidden="true"><span class="cursor-orbit__dot"></span></div>
+  <script type="module" src="three-scene.js"></script>
+  <script src="intro-sequence.js" defer></script>
+</body>
+
+</html>
